@@ -1,0 +1,190 @@
+Problem Description:
+You are tasked with creating a customer service platform where users can log in using Google OAuth and 
+interact with customer service through Intercom.com. The customer service requests should be grouped into categories 
+such as General Queries, Product Features Queries, Product Pricing Queries, and Product Feature Implementation Requests. 
+This assignment will assess your skills in integrating third-party services, implementing OAuth authentication, and 
+building a microservices architecture.
+
+Requirements:
+Backend Microservice (Flask/FastAPI):
+Implement a Python backend microservice that provides the following API endpoints:
+- User Authentication: Enable users to log in using Google OAuth.
+- Customer Service Interaction: Allow users to submit customer service requests, including the category (General Queries, Product Features Queries, Product Pricing Queries, Product Feature Implementation Requests) and additional comments.
+- Data Retrieval: Create endpoints to retrieve and display customer service requests for each category.
+- Intercom Integration: Integrate Intercom.com to handle customer service requests. Ensure that customer service interactions through your platform are reflected on Intercom.com.
+
+Frontend (Flask with Jinja2 Templates or Django):
+Develop a frontend that includes the following features:
+- Google OAuth Integration: Implement a user interface for users to log in using their Google accounts.
+- Customer Service Form: Create a form for users to submit customer service requests, with options to select the category and provide additional comments.
+- Display Customer Service Requests: Show customer service requests for each category in a user-friendly manner.
+
+Integration with Intercom.com:
+Integrate Intercom.com into your backend to handle customer service interactions. Ensure that the frontend communicates effectively with the backend and Intercom.com.
+
+Step-by-Step Chronological Order:
+1. Environment Setup
+   - Task: Set up your development environment.
+   - Details:
+     - Install Python and set up a virtual environment.
+     - Install necessary libraries: Flask/FastAPI, Authlib, requests, and a database library (like SQLite).
+
+2. Google OAuth Registration
+   - Task: Register your application with Google.
+   - Details:
+     - Go to the Google Developer Console.
+     - Create a new project and set up the OAuth consent screen.
+     - Create OAuth 2.0 credentials and note down the client ID and secret.
+
+3. Basic Flask/FastAPI Application
+   - Task: Set up a basic Flask/FastAPI application.
+   - Details:
+     - Create a simple Flask/FastAPI app with a few routes to ensure everything is working.
+     - Set up your project structure with separate folders for templates and static files.
+
+4. Implement Google OAuth in Flask/FastAPI
+   - Task: Integrate Google OAuth.
+   - Details:
+     - Use the Authlib library to handle OAuth.
+     - Create routes for login, authorization, and callback.
+     - Test the OAuth flow to ensure users can log in with their Google account.
+
+5. Create Database and Models
+   - Task: Set up the database and define models.
+   - Details:
+     - Use SQLite for simplicity.
+     - Define models for user and customer service requests.
+     - Set up database migration scripts if necessary.
+
+6. Customer Service API Endpoints
+   - Task: Create API endpoints for customer service interactions.
+   - Details:
+     - Implement endpoints for submitting customer service requests.
+     - Create endpoints to retrieve and categorize requests.
+     - Test these endpoints using tools like Postman.
+
+7. Intercom Integration
+   - Task: Integrate with Intercom.
+   - Details:
+     - Use the requests library to interact with the Intercom API.
+     - Ensure that customer service requests are reflected in Intercom.
+     - Test the integration thoroughly.
+
+8. Frontend Setup with Flask and Jinja2/Django
+   - Task: Set up the frontend using Flask with Jinja2 templates or Django.
+   - Details:
+     - Create basic HTML templates.
+     - Set up a form for submitting customer service requests.
+     - Design the UI for displaying categorized requests.
+
+9. Google OAuth UI Integration
+   - Task: Integrate Google OAuth with the frontend.
+   - Details:
+     - Create a login button in your templates.
+     - Handle the OAuth flow and display a success message or redirect the user upon successful login.
+
+10. Form Handling and Submission
+    - Task: Implement form handling for customer service requests.
+    - Details:
+      - Create forms in your HTML templates for submitting requests.
+      - Handle form submissions and send data to your backend endpoints.
+      - Validate and process the form data.
+
+11. Display Customer Service Requests
+    - Task: Implement the UI to display requests.
+    - Details:
+      - Create views to display categorized customer service requests.
+      - Ensure the data is fetched from your backend and displayed correctly.
+
+12. Testing and Debugging
+    - Task: Test the entire application.
+    - Details:
+      - Test all functionalities thoroughly.
+      - Fix any bugs and ensure the application is stable.
+
+13. Deployment
+    - Task: Deploy your application.
+    - Details:
+      - Choose a hosting provider (e.g., Heroku, AWS).
+      - Set up your environment variables and configure the server.
+      - Deploy your application and test it in a live environment.
+
+Possible File Structure:
+
+your_project/
+├── backend/
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── auth.py
+│   │   ├── models.py
+│   │   ├── crud.py
+│   │   ├── database.py
+│   │   └── intercom.py
+│   └── requirements.txt
+│
+├── frontend/
+│   ├── static/
+│   ├── templates/
+│   │   ├── base.html
+│   │   ├── login.html
+│   │   ├── submit_request.html
+│   │   └── display_requests.html
+│   └── app.py
+│   └── requirements.txt
+│
+└── README.md
+
+
+
+
+Utility of Files:
+
+1. main.py
+   - Utility: This is the main entry point for your FastAPI application. It initializes the app and includes the different routers (modules) that define your API endpoints.
+   - Type of Code/Work:
+     - App Initialization: Set up the FastAPI app.
+     - Routing: Include routers from other modules (e.g., auth.py, crud.py).
+     - Middleware: Configure middleware if needed.
+
+2. auth.py
+   - Utility: Manages user authentication using Google OAuth. This file handles the OAuth flow, including redirecting users to Google for authentication and handling the callback.
+   - Type of Code/Work:
+     - OAuth Configuration: Set up Google OAuth credentials and endpoints.
+     - Authentication Routes: Define routes for login and OAuth callbacks.
+     - Token Management: Handle tokens and user sessions.
+
+3. models.py
+   - Utility: Defines the database models that represent your data schema. These models are used to interact with the database.
+   - Type of Code/Work:
+     - Model Definitions: Create classes that map to database tables.
+     - Relationships: Define relationships between different models if necessary.
+     - Schema Definitions: (Optional) Define Pydantic schemas for validation and serialization.
+
+4. crud.py
+   - Utility: Contains functions for performing CRUD (Create, Read, Update, Delete) operations on your database. It abstracts the logic for interacting with the database.
+   - Type of Code/Work:
+     - CRUD Operations: Functions to create, read, update, and delete records.
+     - Business Logic: Implement business logic related to data manipulation.
+     - Data Access: Interact with the database using SQLAlchemy or another ORM.
+
+5. database.py
+   - Utility: Manages the database connection and session handling. It sets up the connection to your database and provides utilities for managing database sessions.
+   - Type of Code/Work:
+     - Database Connection: Configure and establish a connection to the database.
+     - Session Management: Provide a way to create and manage database sessions.
+     - Initialization: Set up database tables and handle migrations if needed.
+
+6. intercom.py
+   - Utility: Handles integration with the Intercom API. This file manages sending and receiving data from Intercom to facilitate customer service interactions.
+   - Type of Code/Work:
+     - API Integration: Set up communication with the Intercom API.
+     - Data Handling: Define functions for sending data to Intercom and receiving responses.
+     - Configuration: Manage API keys and other configuration details for Intercom.
+
+Summary:
+- main.py: Initializes the FastAPI app and sets up routing.
+- auth.py: Handles Google OAuth authentication.
+- models.py: Defines the data models for database interaction.
+- crud.py: Implements CRUD operations and business logic.
+- database.py: Manages database connections and sessions.
+- intercom.py: Integrates with the Intercom API for customer service.
